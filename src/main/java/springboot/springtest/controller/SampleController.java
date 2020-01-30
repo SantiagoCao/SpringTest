@@ -3,6 +3,8 @@ package springboot.springtest.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,10 +38,10 @@ public class SampleController {
 		return sampleService.getUserLanguage(userName);
 	}
 	
-	@RequestMapping(value = "/insertUser/{userName},{language}", method = RequestMethod.POST)
-	public UserLanguage insertUser(@PathVariable("userName") String userName, @PathVariable("language") String language) {
-		return sampleService.insertUserLanguage(userName, language);
+//	@RequestMapping(value = "/insertUser", produces = "application/json", method = RequestMethod.POST)
+	@PostMapping("/insertUser")
+	public UserLanguage insertUser(@RequestBody UserLanguage userLanguage) {
+		return sampleService.insertUserLanguage(userLanguage.getUsl_user(), userLanguage.getUsl_language());
 	}	
-	
 
 }

@@ -27,11 +27,13 @@ public class UserLanguage implements Serializable {
 	private String usl_language;
 	
 	public UserLanguage(Long id, String usl_user, String usl_language) {
-		super();
 		this.id = id;
 		this.usl_user = usl_user;
 		this.usl_language = usl_language;
-	}	
+	}
+	
+	public UserLanguage() {
+	}		
 
 	public Long getId() {
 		return id;
