@@ -1,5 +1,7 @@
 package springboot.springtest.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,12 @@ public class SampleController {
 	public SampleController(SampleService sampleService) {
 		this.sampleService = sampleService;
 	}
+	
+//	@RequestMapping(value = "/getUser/{userName}", method = RequestMethod.GET)
+	@GetMapping("/getUsers")
+	public List<UserLanguage> getUsers() {
+		return sampleService.getUsers();
+	}	
 	
 //	@RequestMapping(value = "/getUser/{userName}", method = RequestMethod.GET)
 	@GetMapping("/getUserId/{id}")

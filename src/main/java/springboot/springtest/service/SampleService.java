@@ -1,5 +1,7 @@
 package springboot.springtest.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,10 @@ public class SampleService {
 
 	@Autowired
 	UserRepository userRepository;
+
+	public List<UserLanguage> getUsers() {
+		return userRepository.findAll();
+	}	
 
 	public UserLanguage getUserIdLanguage(Long id) {
 		return userRepository.findOne(id);
