@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "USER_LANGUAGE")
+@Table(name = "user_language")
 public class UserLanguage implements Serializable {
 	
 	private static final long serialVersionUID = 4894729030347835498L;
@@ -21,15 +21,15 @@ public class UserLanguage implements Serializable {
 	private Long id;
 
 	@Column(name = "USL_USER", nullable = false, unique = true)
-	private String usl_user;
+	private String username;
 
 	@Column(name = "USL_LANGUAGE", nullable = false)
-	private String usl_language;
+	private String userlanguage;
 	
-	public UserLanguage(Long id, String usl_user, String usl_language) {
+	public UserLanguage(Long id, String username, String userlanguage) {
 		this.id = id;
-		this.usl_user = usl_user;
-		this.usl_language = usl_language;
+		this.username = username;
+		this.userlanguage = userlanguage;
 	}
 	
 	public UserLanguage() {
@@ -43,21 +43,20 @@ public class UserLanguage implements Serializable {
 		this.id = id;
 	}
 
-	public String getUsl_user() {
-		return usl_user;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUsl_user(String usl_user) {
-		this.usl_user = usl_user;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getUsl_language() {
-		return usl_language;
+	public String getUserlanguage() {
+		return userlanguage;
 	}
 
-	public void setUsl_language(String usl_language) {
-		this.usl_language = usl_language;
+	public void setUserlanguage(String userlanguage) {
+		this.userlanguage = userlanguage;
 	}
-
 
 }

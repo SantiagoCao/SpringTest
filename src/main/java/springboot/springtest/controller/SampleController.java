@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.springtest.model.UserLanguage;
@@ -25,35 +24,31 @@ public class SampleController {
 		this.sampleService = sampleService;
 	}
 	
-	@GetMapping("/welcome/{userName}")
-	public String welcome(@PathVariable("userName") String userName) {
-		return sampleService.welcome(userName);
+//	@RequestMapping(value = "/getUser/{userName}", method = RequestMethod.GET)
+	@GetMapping("/getUserId/{id}")
+	public UserLanguage getUserByid(@PathVariable("id") Long id) {
+		return sampleService.getUserIdLanguage(id);
 	}	
-
-	@RequestMapping(value = "/welcome/welcome/{userName}", method = RequestMethod.GET)
-	public String welcome2(@PathVariable("userName") String userName) {
-		return sampleService.welcome(userName);
-	}
-
+	
 //	@RequestMapping(value = "/getUser/{userName}", method = RequestMethod.GET)
 	@GetMapping("/getUser/{userName}")
 	public UserLanguage getUser(@PathVariable("userName") String userName) {
 		return sampleService.getUserLanguage(userName);
 	}
-	
+		
 //	@RequestMapping(value = "/insertUser", produces = "application/json", method = RequestMethod.POST)
 	@PostMapping("/insertUser")
 	public UserLanguage insertUser(@RequestBody UserLanguage userLanguage) {
 		return sampleService.insertUserLanguage(userLanguage);
 	}	
-	
+
 //	@RequestMapping(value = "/deleteUser", produces = "application/json", method = RequestMethod.DELETE)
-	@DeleteMapping("/deleteUser/{userName}")
-	public Boolean deleteUser(@PathVariable("userName") String userName) {
-		Object obj = sampleService.deleteUserLanguage(userName);
+	@DeleteMapping("/deleteUser/{id}")
+	public Boolean deleteUser(@PathVariable("id") Long id) {
+		sampleService.deleteUserLanguage(id);
 		return true;
 	}
-	
+		
 //	@RequestMapping(value = "/updateUser", produces = "application/json", method = RequestMethod.PUT)
 	@PutMapping("/updateUser")
 	public UserLanguage uodateUser(@RequestBody UserLanguage userLanguage) {

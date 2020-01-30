@@ -4,41 +4,33 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import springboot.springtest.model.UserLanguage;
-import springboot.springtest.repository.SampleRepository;
 import springboot.springtest.repository.UserRepository;
 
 @Service
 public class SampleService {
  
     @Autowired
-    private SampleRepository sampleRepository;
+    UserRepository userRepository;
     
-//    @Autowired
-//    UserRepository userRepository;
- 
-    public SampleService(SampleRepository sampleRepository) {
-        this.sampleRepository = sampleRepository;
-    }
- 
-    public String welcome(String userName) {
-        return sampleRepository.getMessageByUser(userName);
-    }
-    
-    public UserLanguage getUserLanguage(String userName) {
-//        return userRepository.findOneByUsername(userName);
-    	return sampleRepository.getUserLanguage(userName);
-    }
-    
+	public UserLanguage getUserIdLanguage(Long id) {
+		return userRepository.findOne(id);
+	} 
+
+    public UserLanguage getUserLanguage(String username) {
+//    	return userRepository.findOne(new Long(1));
+    	return userRepository.findOneByUsername(username);
+  }	
+	
     public UserLanguage insertUserLanguage(UserLanguage newUser) {
-    	return sampleRepository.insertUserLanguage(newUser);
-  }
-
-	public Boolean deleteUserLanguage(String userName) {
-		return sampleRepository.deleteUserLanguage(userName);
-	}
-
+    	return userRepository.saveAndFlush(newUser);
+  }	
+    
+	public void deleteUserLanguage(Long id) {
+		userRepository.delete(id);
+	} 
+	
 	public UserLanguage updateUserLanguage(UserLanguage userLanguage) {
-		return sampleRepository.updateUserLanguage(userLanguage);
-	}    
+		return userRepository.save(userLanguage);
+	}
 
 }
