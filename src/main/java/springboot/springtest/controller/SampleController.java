@@ -33,8 +33,14 @@ public class SampleController {
 //	@RequestMapping(value = "/getUser/{userName}", method = RequestMethod.GET)
 	@GetMapping("/getUser/{userName}")
 	public UserLanguage getUser(@PathVariable("userName") String userName) {
-		return sampleService.getUserLanguage(userName);
+		return sampleService.getUserNameLanguage(userName);
 	}
+	
+//	@RequestMapping(value = "/getUser/{userName}", method = RequestMethod.GET)
+	@GetMapping("/getUserLanguage/{userlanguage}")
+	public UserLanguage getUserLanguage(@PathVariable("userlanguage") String userlanguage) {
+		return sampleService.getUserLanguage(userlanguage);
+	}	
 		
 //	@RequestMapping(value = "/insertUser", produces = "application/json", method = RequestMethod.POST)
 	@PostMapping("/insertUser")
