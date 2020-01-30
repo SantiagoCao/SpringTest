@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="springboot.springtest.mapper.SampleMapper">
+ 
+    <select id="getLanguageByUser" resultType="String">
+        SELECT USL_LANGUAGE FROM USER_LANGUAGE WHERE USL_USER = #{userName}
+    </select>
+ 
+    <select id="getMessageByLanguage" resultType="String">
+        SELECT MSG_DESCRIPTION FROM MESSAGES WHERE MSG_MESSAGE = "welcome" AND MSG_LANGUAGE = #{language}
+    </select>
+    
+    <select id="getUserLanguageByName" resultType="springboot.springtest.model.UserLanguage">
+        SELECT id, USL_USER, USL_LANGUAGE FROM USER_LANGUAGE WHERE USL_USER = #{userName}
+    </select>  
+
+    <select id="insertUserLanguage" resultType="springboot.springtest.model.UserLanguage">
+        INSERT USER_LANGUAGE (USL_USER, USL_LANGUAGE) VALUES (#{userName},#{language})
+    </select>        
+ 
+</mapper>
