@@ -16,6 +16,14 @@
 
     <select id="insertUserLanguage" resultType="springboot.springtest.model.UserLanguage">
         INSERT USER_LANGUAGE (USL_USER, USL_LANGUAGE) VALUES (#{userName},#{language})
-    </select>        
+    </select>    
+
+    <select id="deleteUserLanguage" resultType="springboot.springtest.model.UserLanguage">
+        DELETE FROM USER_LANGUAGE WHERE ID = #{id}
+    </select>           
+ 
+     <select id="updateUserLanguage" resultType="springboot.springtest.model.UserLanguage">
+        UPDATE testdb.USER_LANGUAGE SET USL_USER = #{userName}, USL_LANGUAGE = #{language} WHERE ID = #{id}
+    </select>           
  
 </mapper>

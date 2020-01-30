@@ -14,6 +14,10 @@ public interface SampleMapper {
 	
 	UserLanguage getUserLanguageByName(@Param("userName") String userName);
 	
-	Boolean insertUserLanguage(@Param("userName") String userName, @Param("language") String language);
+	UserLanguage insertUserLanguage(@Param("userName") String userName, @Param("language") String language);
+
+	Boolean deleteUserLanguage(@Param("id") long id);
+
+	Boolean updateUserLanguage(@Param("id") long id, @Param("userName") String userName, @Param("language") String language);
 
 }

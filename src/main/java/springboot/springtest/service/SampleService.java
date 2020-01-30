@@ -29,8 +29,16 @@ public class SampleService {
     	return sampleRepository.getUserLanguage(userName);
     }
     
-    public UserLanguage insertUserLanguage(String userName, String languages) {
-    	return sampleRepository.insertUserLanguage(userName, languages);
-  }    
+    public UserLanguage insertUserLanguage(UserLanguage newUser) {
+    	return sampleRepository.insertUserLanguage(newUser);
+  }
+
+	public Boolean deleteUserLanguage(String userName) {
+		return sampleRepository.deleteUserLanguage(userName);
+	}
+
+	public UserLanguage updateUserLanguage(UserLanguage userLanguage) {
+		return sampleRepository.updateUserLanguage(userLanguage);
+	}    
 
 }

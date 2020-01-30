@@ -25,9 +25,19 @@ public class SampleRepository {
 		return sampleMapper.getUserLanguageByName(userName);
 	}
 	
-	public UserLanguage insertUserLanguage(String userName, String languages) {
-		sampleMapper.insertUserLanguage(userName, languages);
-		return sampleMapper.getUserLanguageByName(userName);
+	public UserLanguage insertUserLanguage(UserLanguage newUser) {
+		sampleMapper.insertUserLanguage(newUser.getUsl_user(), newUser.getUsl_language());
+		return sampleMapper.getUserLanguageByName(newUser.getUsl_user());
+	}
+
+	public Boolean deleteUserLanguage(String userName) {
+		UserLanguage ul = sampleMapper.getUserLanguageByName(userName);
+		return sampleMapper.deleteUserLanguage(ul.getId());
+	}
+
+	public UserLanguage updateUserLanguage(UserLanguage userLanguage) {
+		sampleMapper.updateUserLanguage(userLanguage.getId(), userLanguage.getUsl_user(), userLanguage.getUsl_language());
+		return null;
 	}		
 }
 
