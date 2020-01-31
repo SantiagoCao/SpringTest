@@ -6,7 +6,7 @@
 	<groupId>springboot</groupId>
 	<artifactId>SpringTest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>SpringTest</name>
 	<url>http://maven.apache.org</url>
@@ -61,4 +61,26 @@
           <artifactId>spring-boot-starter-data-jpa</artifactId>
      </dependency>
 	</dependencies>
+	
+<build>
+		<finalName>${project.artifactId}</finalName>
+		<plugins>
+			<plugin>
+			    <groupId>org.springframework.boot</groupId>
+			    <artifactId>spring-boot-maven-plugin</artifactId>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>repackage</goal>
+			            </goals>
+			            <configuration>
+			                <mainClass>springboot.springtest.App</mainClass>
+			                <outputDirectory>src/main/webapp</outputDirectory>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
+		</plugins>
+	</build>
+ 
 </project>
